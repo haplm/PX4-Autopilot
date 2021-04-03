@@ -4,7 +4,7 @@ px4_add_board(
 	PLATFORM nuttx
 	VENDOR holybro
 	MODEL can-gps-v1
-	LABEL default
+	LABEL debug
 	TOOLCHAIN arm-none-eabi
 	ARCHITECTURE cortex-m4
 	CONSTRAINED_MEMORY
@@ -22,14 +22,16 @@ px4_add_board(
 		uavcannode
 	MODULES
 		#ekf2
+		load_mon
 		sensors
 	SYSTEMCMDS
-		#i2cdetect
+		i2cdetect
 		param
-		#perf
-		#top
+		perf
+		reboot
+		top
 		#topic_listener
-		#uorb
-		#ver
-		#work_queue
+		uorb
+		ver
+		work_queue
 )
