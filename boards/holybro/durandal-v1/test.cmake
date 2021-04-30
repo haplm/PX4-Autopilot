@@ -1,22 +1,22 @@
 
 px4_add_board(
 	PLATFORM nuttx
-	VENDOR cubepilot
-	MODEL cubeyellow
-	LABEL console
+	VENDOR holybro
+	MODEL durandal-v1
+	LABEL test
 	TOOLCHAIN arm-none-eabi
 	ARCHITECTURE cortex-m7
 	ROMFSROOT px4fmu_common
-	IO cubepilot_io-v2_default
+	BUILD_BOOTLOADER
+	IO px4_io-v2_default
 	TESTING
 	UAVCAN_INTERFACES 2
 	SERIAL_PORTS
-		TEL1:/dev/ttyS0
-		TEL2:/dev/ttyS1
-		GPS1:/dev/ttyS2
-		# PX4IO:/dev/ttyS3
-		# CONSOLE:/dev/ttyS4
-		GPS2:/dev/ttyS5
+		GPS1:/dev/ttyS0
+		TEL1:/dev/ttyS1
+		TEL2:/dev/ttyS2
+		TEL3:/dev/ttyS4
+		TEL4:/dev/ttyS3
 	DRIVERS
 		#adc/ads1115
 		adc/board_adc
@@ -28,25 +28,26 @@ px4_add_board(
 		distance_sensor # all available distance sensor drivers
 		dshot
 		gps
-		#heater
+		heater
 		#imu # all available imu drivers
-		imu/invensense/icm20602
-		imu/invensense/icm20649
-		imu/invensense/icm20948
-		irlock
+		#imu/analog_devices/adis16448
+		imu/bosch/bmi088
+		imu/invensense/icm20689
+		imu/invensense/icm20948 # required for ak09916 mag
+		#irlock
 		lights # all available light drivers
 		magnetometer # all available magnetometer drivers
 		optical_flow # all available optical flow drivers
-		osd
-		pca9685
+		#osd
+		#pca9685
 		#pca9685_pwm_out
 		power_monitor/ina226
 		#protocol_splitter
 		pwm_out_sim
 		pwm_out
 		px4io
-		roboclaw
-		rpm
+		#roboclaw
+		#rpm
 		telemetry # all available telemetry drivers
 		test_ppm
 		tone_alarm
@@ -59,7 +60,7 @@ px4_add_board(
 		commander
 		dataman
 		ekf2
-		esc_battery
+		#esc_battery
 		events
 		flight_mode_manager
 		fw_att_control
@@ -106,9 +107,9 @@ px4_add_board(
 		perf
 		pwm
 		reboot
-		reflect
+		#reflect
 		sd_bench
-		#serial_test
+		serial_test
 		system_time
 		tests # tests and test runner
 		top
